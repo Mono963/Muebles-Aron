@@ -1,4 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { IsEmail, Length, IsString, IsInt, isString } from "class-validator";
 
 
 @Entity({
@@ -7,33 +8,36 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 export class Form {
     @PrimaryGeneratedColumn("uuid")
-    id: number;
+    id: string;
 
-    @Column({
-        length: 100
-    })
+    @Column({ length: 100})
+    @Length(1, 100)
+    @IsString()
     name: string;
 
     @Column({
+        name: "last_name",
         length: 100
     })
+    @Length(1, 100)
+    @IsString()
     lastname: string;
 
     @Column({
         length: 100,
         unique: true
     })
+    @IsEmail()
+    @Length(5, 100)
     email: string;
 
-    @Column({
-        type: "int",
-        unique: true
-    })
+    @Column({ type: "int" })
+    @IsInt()
     phoneNumber: number;
 
-    @Column({
-        length: 100
-    })
+    @Column({ type: "text"})
+    @Length(0, 1000)
+    @IsString()
     details: string;
 
 }

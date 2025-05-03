@@ -11,7 +11,7 @@ export const formPage = async (req: Request, res: Response) => {
       details
     });
 
-    const newUser = createForm;
+    createForm;
 
     res.status(201).json({ boolean: true });
   } catch (error) {

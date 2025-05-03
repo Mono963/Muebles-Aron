@@ -11,7 +11,7 @@ export const AppDataSource = new DataSource({
     username: DB_USERNAME,
     password: DB_PASSWORD,
     database: DB_NAME,
-    // dropSchema:true, // Sirve para que cada ves que se inicialize se borre la base de datos anterior
+    dropSchema:true, // Sirve para que cada ves que se inicialize se borre la base de datos anterior
     synchronize: true,
     logging: ["error"],
     entities: [Form],
