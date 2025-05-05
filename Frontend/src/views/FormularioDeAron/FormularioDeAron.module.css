@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Host+Grotesk:ital@0;1&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+.fondo {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.conteiner_register {
+  background-color: rgba(246, 241, 237, 0.9);
+  padding: 3rem;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: #000;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.label {
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #333;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: "Host Grotesk", sans-serif;
+  font-size: 1rem;
+  transition: border 0.3s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #8b7355;
+}
+
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.button {
+  background-color: #8b7355;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-family: "Host Grotesk", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #6d5a41;
+}
+
+.button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.errors {
+  color: #d32f2f;
+  font-family: "Host Grotesk", sans-serif;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+}
+
+.messageUser {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 5px;
+  font-family: "Host Grotesk", sans-serif;
+  text-align: center;
+}
+
+.messageUser.success {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.messageUser.error {
+  background-color: #ffebee;
+  color: #d32f2f;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .conteiner_register {
+    padding: 2rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .conteiner_register {
+    padding: 1.5rem;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+  }
+  
+  .fondo {
+    padding: 1rem;
+  }
+}

@@ -6,7 +6,7 @@ import { sendFormEmail } from "../utils/Email";
 export const servicesPostForm = async (ForDto: IFormDto ): Promise<void> => {
     const createForm: Form = formRepositoryAron.create({
         name: ForDto.name,
-        lastname: ForDto.lastName,
+        lastName: ForDto.lastName,
         email: ForDto.email,
         phoneNumber: ForDto.phoneNumber,
         details: ForDto.details

@@ -21,7 +21,7 @@ export class Form {
     })
     @Length(1, 100)
     @IsString()
-    lastname: string;
+    lastName: string;
 
     @Column({
         length: 100,
@@ -31,7 +31,7 @@ export class Form {
     @Length(5, 100)
     email: string;
 
-    @Column({ type: "int" })
+    @Column({ type: "bigint" })
     @IsInt()
     phoneNumber: number;
 

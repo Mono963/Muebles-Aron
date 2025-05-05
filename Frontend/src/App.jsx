@@ -1,9 +1,14 @@
 import './App.css'
 import Home from './views/Home/Home';
+import FormularioDeAron from './views/FormularioDeAron/FormularioDeAron';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
     return (    
-    <Home />
+    <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path="/formulario" element={<FormularioDeAron/>}/>
+    </Routes>
     );
 }
 

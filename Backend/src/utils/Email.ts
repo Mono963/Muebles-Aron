@@ -24,7 +24,7 @@ export const sendFormEmail = async ( data: {
     const mailOptions  = {
         from: `"Formulario de contacto" <${process.env.EMAIL_USER}>`,
         to: process.env.EMAIL_USER,
-        subject: "Nuevo dormulario de contacto",
+        subject: "Nuevo Formulario de contacto",
         html: `
             <h1>Hola Aron como estas bro, esta es la informacion de la pagina</h1>
             <p><strong>Nombre:</strong> ${data.name}</p>
