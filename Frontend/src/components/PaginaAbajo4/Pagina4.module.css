@@ -1,0 +1,101 @@
+.fondo {
+  background-image:url(../../assets/muebles-de-madera-a-medida-1024x576.webp) !important;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    min-height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+  
+  .titulo {
+    font-family: "PT Serif", serif;
+    font-weight: 700;
+    font-size: 3.5rem;
+    color: #ffffff;
+    margin-bottom: 4rem;
+    line-height: 1.2;
+    text-align: center;
+  }
+  
+  .filaProductos {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10rem;
+    margin-right: 5rem;
+  }
+  
+  .producto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 600px;
+  }
+  
+  .titulo_h2 {
+    font-family: "Host Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #ffffff;
+    margin-top: 1.5rem;
+  }
+  
+  .parrafo {
+    font-family: "Host Grotesk", sans-serif;
+    font-size: 1.1rem;
+    color: rgb(122, 122, 122)fff;
+    line-height: 1.7;
+    margin: 1rem 0;
+  }
+  
+
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .titulo {
+      font-size: 2.5rem;
+    }
+  
+    .titulo_h2 {
+      font-size: 1.5rem;
+    }
+  
+    .parrafo {
+      font-size: 1rem;
+    }
+  
+    .contenedor {
+      padding: 1rem;
+    }
+  
+    .filaProductos {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .titulo {
+      font-size: 2rem;
+    }
+  
+    .titulo_h2 {
+      font-size: 1.2rem;
+    }
+  
+    .parrafo {
+      font-size: 0.95rem;
+    }
+  }

@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Host+Grotesk:ital@0;1&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+.contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f6f1ed;
+    width: 100vw;
+    height: 100vh;
+    padding: 0 8rem; 
+    box-sizing: border-box;
+    gap: 4rem;
+}
+
+.texto {
+    flex: 1;
+}
+
+.titulo {
+    font-family: "PT Serif", serif;
+    font-weight: 700;
+    font-size: 3.5rem;
+    color: #000;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+.parrafo {
+    font-family: "Host Grotesk", sans-serif;
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.7;
+    max-width: 600px;
+}
+
+.imagenContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.imagen {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}

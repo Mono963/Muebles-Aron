@@ -1,9 +1,10 @@
-import AddToDo from './AddToDo'
 import './App.css'
-import ToDoCounter from './ToDoCounter';
-import ToDoList from './ToDoList';
+import Home from './views/Home/Home';
 
 function App() {
+    return (    
+    <Home />
+    );
 }
 
 export default App;

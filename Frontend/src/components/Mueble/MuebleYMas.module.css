@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Host+Grotesk:ital@0;1&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* Contenedor de la sección "muebles" */
+.muebles {
+  position: absolute;
+  top: 100px;
+  left: 300px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+
+  text-align: center; 
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #ffffff;
+}
+
+/* Título */
+.muebles h2 {
+  line-height: 1;
+  margin: 0;
+  transform: scaleX(2); 
+  letter-spacing: 0.5px;    
+  font-weight: 300;
+  font-size: 2rem;
+}
+
+/* 📱 Responsivo para tablets y celulares */
+@media (max-width: 1024px) {
+  .muebles {
+    left: 150px;
+    top: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .muebles {
+    left: 50px;
+    top: 60px;
+  }
+
+  .muebles h2 {
+    transform: scaleX(1.5);
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .muebles {
+    left: 20px;
+    top: 40px;
+  }
+
+  .muebles h2 {
+    transform: scaleX(1.2);
+    font-size: 1.2rem;
+  }
+}
