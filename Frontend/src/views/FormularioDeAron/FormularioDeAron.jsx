@@ -2,9 +2,12 @@ import style from './FormularioDeAron.module.css';
 import { validateFormulario } from "../../helpers/validateForm.js";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Loader from '../../components/Loader/Loader.jsx';
 
 const FormularioDeAron = () => {
   const [message, setMessage] = useState(null);
+  const navigate = useNavigate();
 
   const initialFormValues = {
     name: "",
@@ -66,6 +69,10 @@ const FormularioDeAron = () => {
     }
   };
 
+ const hendleHome = () => {
+    navigate("/");
+  }
+
   return (
     <div className={style.fondo}>
       <Formik
@@ -74,8 +81,17 @@ const FormularioDeAron = () => {
         onSubmit={handleSubmit}
       >
         {({ isSubmitting, isValid, dirty }) => (
+          <>
+          {isSubmitting && <Loader />}
           <Form className={style.conteiner_register}>
             <h1 className={style.title}>Formulario de contacto</h1>
+            <button 
+              type='button' 
+              onClick={hendleHome}
+              className={style.button_home} 
+            >
+              &lt;--- Regresar a la página principal
+            </button>
 
             {message && (
               <div className={`${style.messageUser} ${style[message.type]}`}>
@@ -119,7 +135,7 @@ const FormularioDeAron = () => {
             <div className={style.formGroup}>
               <label htmlFor='phoneNumber' className={style.label}>Teléfono:</label>
               <Field 
-                type='text'  // Cambiado de 'tel' a 'text' para mejor control
+                type='text'
                 name='phoneNumber' 
                 placeholder='3418860776' 
                 className={style.input}
@@ -152,6 +168,7 @@ const FormularioDeAron = () => {
               {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
             </button>
           </Form>
+          </>
         )}
       </Formik>
     </div>
