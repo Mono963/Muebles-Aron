@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Host+Grotesk:ital@0;1&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+.fondo {
+  background-image: url("../../assets/pagina-foto-diseno-blog-2.webp");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.conteiner_register {
+  background-color: rgba(246, 241, 237, 0.9);
+  padding: 3rem;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.title {
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  font-size: 3rem; /* Aumentamos el tamaño para que destaque más */
+  color: #000;
+  margin-bottom: 2.5rem; /* Más espacio debajo */
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Añadir borde inferior animado */
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #8b7355; /* Color de la línea inferior */
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.title:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.title:hover {
+  color: #8b7355; /* Color cuando se pasa el mouse */
+  transform: translateY(-5px); /* Pequeño desplazamiento cuando se pasa el mouse */
+}
+
+/* Animación de aparición */
+@keyframes fadeInTitle {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  animation: fadeInTitle 0.8s ease forwards;
+}
+
+.subtitle {
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 600;
+  font-size: 2.2rem;
+  color: #444;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.productDescription {
+  font-family: "Host Grotesk", sans-serif;
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Contenedor de tarjetas con recursos */
+.productCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.card {
+  width: 100%;
+  max-width: 320px;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.cardTitle {
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.cardDescription {
+  font-family: "Host Grotesk", sans-serif;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.downloadLink {
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 600;
+  color: #dd9d4c;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.downloadLink:hover {
+  color: #ac7b3c;
+  transform: scale(1.05);
+}
+
+.icon {
+  font-size: 1.4rem;
+  transition: transform 0.3s ease;
+}
+
+.downloadLink:hover .icon {
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .conteiner_register {
+    padding: 3rem;
+  }
+
+  .highlightedProduct {
+    width: 50%;
+    margin-bottom: 4rem;
+  }
+
+  .card {
+    width: 250px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .conteiner_register {
+    padding: 4rem;
+  }
+
+  .card {
+    width: 300px;
+  }
+}

@@ -16,7 +16,7 @@ const FormularioDeAron = () => {
     phoneNumber: "",
     details: ""
   };
-
+  
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
       const formData = {
@@ -84,14 +84,14 @@ const FormularioDeAron = () => {
           <>
           {isSubmitting && <Loader />}
           <Form className={style.conteiner_register}>
-            <h1 className={style.title}>Formulario de contacto</h1>
-            <button 
+          <button 
               type='button' 
               onClick={hendleHome}
               className={style.button_home} 
             >
-              &lt;--- Regresar a la página principal
-            </button>
+              &lt;---
+          </button>
+            <h1 className={style.title}>Formulario de contacto</h1>
 
             {message && (
               <div className={`${style.messageUser} ${style[message.type]}`}>

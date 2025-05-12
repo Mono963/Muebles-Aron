@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { servicesPostForm } from "../services/service.form";
-export const formPage = async (req: Request, res: Response) => {
+const formPage = async (req: Request, res: Response) => {
   try {
     const { name, lastName, email, phoneNumber, details  } = req.body;
     const createForm = await servicesPostForm({
@@ -28,3 +28,4 @@ export const formPage = async (req: Request, res: Response) => {
   }
 };
 
+export default formPage;

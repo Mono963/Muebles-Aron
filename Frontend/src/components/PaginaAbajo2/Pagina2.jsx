@@ -2,13 +2,19 @@ import style from './Pagina2.module.css';
 import gres from "../../assets/descarga.webp"; 
 import mueble from "../../assets/71mszIJDQ0L._AC_SL1500_.webp";
 import adornos from "../../assets/descarga-_1_.webp";
+import { useNavigate } from 'react-router-dom';
   
 const Pagina2 = () => {
+  const navigate = useNavigate();
+  const handleNavigation = () => {
+    navigate('/productos');
+  };
+  
   return (
     <div className={style.contenedor}>
       <div className={style.texto}>
         <h1 className={style.titulo}>Reflexivo y<br />funcional</h1>
-        <button className={style.comprar_button}>VER PRODUCTOS</button>
+        <button className={style.comprar_button} onClick={handleNavigation}>VER PRODUCTOS</button>
       </div>
       <div className={style.producto}>
   <img src={gres} alt="Gres" className={style.imagen} />
