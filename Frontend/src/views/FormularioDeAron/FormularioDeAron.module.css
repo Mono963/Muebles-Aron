@@ -38,10 +38,37 @@
 .title {
   font-family: "PT Serif", serif;
   font-weight: 700;
-  font-size: 2.5rem;
-  color: #000;
-  margin-bottom: 2rem;
+  font-size: 2.8rem;
+  color: #3a2f25;
   text-align: center;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.04);
+  padding-bottom: 0.5rem;
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.title::after {
+  content: "";
+  display: block;
+  width: 400px;
+  height: 2px;
+  background-color: #8b7355;
+  margin: 0 auto;
+  margin-top: 0.5rem;
+  border-radius: 1px;
+}
+
+.subtitle {
+  font-family: "Host Grotesk", sans-serif;
+  font-size: 1.1rem;
+  color: #555;
+  text-align: center;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .formGroup {
@@ -105,20 +132,28 @@
   cursor: not-allowed;
 }
 
+.form_wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+}
+
 .button_home {
+  position: absolute;
+  top: 1rem; 
+  left: 1rem;
+  z-index: 10;
   background-color: #8b7355;
   color: #f6f1ed;
   border: none;
-  padding: 0.5rem 0.5rem;
+  padding: 0.5rem 1rem;
   font-family: "Host Grotesk", sans-serif;
   font-size: 1rem;
   font-weight: 600;
   border-radius: 5px;
   cursor: pointer;
   width: auto;
-  margin-left: 0;
   transition: background-color 0.3s ease;
-  margin-bottom: 1rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 

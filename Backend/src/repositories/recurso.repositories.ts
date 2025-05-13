@@ -12,5 +12,12 @@ export const recursoRespository = AppDataSource.getRepository<TargetPdf>(TargetP
         });
 
         return recurso;
-    }
+    },
+    findByIdTarget: async function (id: string) {
+        const recurso = await this.findOne({
+            where: { id }
+        });
+
+        return recurso;
+    },
 });
