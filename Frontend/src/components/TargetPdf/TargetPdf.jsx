@@ -12,13 +12,14 @@ const TargetPdf = () => {
         recursos.map((recurso) => (
           <div key={recurso.id} className={style.card}>
             <img
-              src={`http://localhost:8080/${recurso.imageUrl}`}
+              src={recurso.imageUrl}
               alt={recurso.title}
               className={style.image}
+              loading="lazy"
             />
             <h3 className={style.title}>{recurso.title}</h3>
             <a
-              href={`http://localhost:8080/${recurso.pdfUrl}`}
+              href={recurso.pdfUrl}
               download
               target="_blank"
               rel="noopener noreferrer"
@@ -30,7 +31,9 @@ const TargetPdf = () => {
           </div>
         ))
       ) : (
-        <p className={style.noResources}>No hay recursos disponibles en este momento.</p>
+        <p className={style.noResources}>
+          No hay recursos disponibles en este momento.
+        </p>
       )}
     </div>
   );

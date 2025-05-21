@@ -6,10 +6,17 @@ export const ContextProvider = ({ children }) => {
   const [recursos, setRecursos] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/recursos")
-      .then(res => res.json())
-      .then(data => setRecursos(data))
-      .catch(err => console.error("Error al obtener recursos:", err));
+    const fetchRecursos = async () => {
+      try {
+        const res = await fetch("http://localhost:8080/recursos");
+        const data = await res.json();
+        setRecursos(data);
+      } catch (err) {
+        console.error("Error al obtener recursos:", err);
+      }
+    };
+
+    fetchRecursos();
   }, []);
 
   return (

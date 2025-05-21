@@ -1,0 +1,21 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const post_form_1 = __importDefault(require("../controllers/post.form"));
+const post_recurso_pdf_1 = __importDefault(require("../controllers/post.recurso.pdf"));
+const get_recursos_1 = __importDefault(require("../controllers/get.recursos"));
+const delete_recurso_delete_1 = __importDefault(require("../controllers/delete.recurso.delete"));
+const multer_1 = require("../utils/multer");
+const recurso_middleware_pdf_1 = require("../middlewares/recurso.middleware.pdf");
+const auth_recurso_create_1 = __importDefault(require("../middlewares/auth.recurso.create"));
+const post_auth_token_controllers_1 = __importDefault(require("../controllers/post.auth.token.controllers"));
+const router = (0, express_1.Router)();
+router.post("/auth", post_auth_token_controllers_1.default);
+router.post("/formulario", post_form_1.default);
+router.post("/recurso", auth_recurso_create_1.default, multer_1.uploadField, recurso_middleware_pdf_1.checkRecursoDuplicado, post_recurso_pdf_1.default);
+router.get("/recursos", get_recursos_1.default);
+router.delete("/recurso/:id", auth_recurso_create_1.default, delete_recurso_delete_1.default);
+exports.default = router;

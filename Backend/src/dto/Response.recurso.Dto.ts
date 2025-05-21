@@ -5,8 +5,8 @@ export class ResponseRecursoDto {
     return {
       id: recurso.id,
       title: recurso.title,
-      imageUrl: `uploads/${recurso.imageUrl}`, // sin path completo
-      pdfUrl: `uploads/${recurso.pdfUrl}`      // sin path completo
+      imageUrl: recurso.imageUrl,
+      pdfUrl:  recurso.pdfUrl      
     };
   }
 

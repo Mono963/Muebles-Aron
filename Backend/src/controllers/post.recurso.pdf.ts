@@ -1,43 +1,79 @@
 import { Request, Response } from "express";
 import recursoPdfService from "../services/service.recurso.pdf";
-import { TargetPdf } from "../entities/TagetPdf";
 import { ResponseRecursoDto } from "../dto/Response.recurso.Dto";
-import { limpiarArchivosSubidos } from "../utils/multer";
+import { checkBucketsExist, supabase } from "../supabase/client";
 
 const subirRecursosPdfContreller = async (req: Request, res: Response) => {
-  const image = (req.files as any)?.["image"]?.[0]?.filename;
-  const pdf = (req.files as any)?.["pdf"]?.[0]?.filename;
-  const { title } = req.body;
-
   try {
-    if (!title || !image || !pdf) {
-      limpiarArchivosSubidos(image, pdf);
-      res.status(400).json({ message: "Datos incompletos: asegúrese de enviar título, imagen y PDF." });
-    } else {
-      const newRecurso: TargetPdf = await recursoPdfService({
-        title,
-        imageUrl: image,
-        pdfUrl: pdf,
-      });
+    const bucketName = "proyectimg";
+    await checkBucketsExist([bucketName]);
 
-      const newRecursoDto = ResponseRecursoDto.toDTO(newRecurso);
-      res.status(201).json(newRecursoDto);
-    }
-  } catch (error) {
-    limpiarArchivosSubidos(image, pdf);
+    const { title } = req.body;
+    const imageFile = (req.files as any)?.["image"]?.[0];
+    const pdfFile = (req.files as any)?.["pdf"]?.[0];
 
-    if (error instanceof Error) {
+    if (!title || !imageFile || !pdfFile) {
       res.status(400).json({
-        message: "Error al guardar el recurso",
-        error: error.message,
+        message: "Datos incompletos: título, imagen y PDF son obligatorios.",
       });
-    } else {
-      res.status(500).json({
-        message: "Error desconocido, inténtelo más tarde",
-      });
+      return;
     }
+
+    const timestamp = Date.now();
+    const imagePath = `imagenes/${timestamp}_${imageFile.originalname}`;
+    const pdfPath = `pdfs/${timestamp}_${pdfFile.originalname}`;
+
+    // Subir imagen
+    const { error: imageError } = await supabase.storage
+      .from(bucketName)
+      .upload(imagePath, imageFile.buffer, {
+        contentType: imageFile.mimetype,
+      });
+
+    if (imageError) {
+      console.error("Error al subir imagen:", imageError.message);
+      res.status(500).json({ message: "Error al subir imagen" });
+      return;
+    }
+
+    // Subir PDF
+    const { error: pdfError } = await supabase.storage
+      .from(bucketName)
+      .upload(pdfPath, pdfFile.buffer, {
+        contentType: pdfFile.mimetype,
+      });
+
+    if (pdfError) {
+      console.error("Error al subir PDF:", pdfError.message);
+      res.status(500).json({ message: "Error al subir PDF" });
+      return;
+    }
+
+    // Obtener URLs públicas
+    const {
+      data: { publicUrl: imageUrl },
+    } = supabase.storage.from(bucketName).getPublicUrl(imagePath);
+
+    const {
+      data: { publicUrl: pdfUrl },
+    } = supabase.storage.from(bucketName).getPublicUrl(pdfPath);
+
+    // Guardar en la DB
+    const newRecurso = await recursoPdfService({
+      title,
+      imageUrl,
+      pdfUrl,
+    });
+
+    const newRecursoDto = ResponseRecursoDto.toDTO(newRecurso);
+    res.status(201).json(newRecursoDto);
+  } catch (error: any) {
+    console.error("Error en subirRecursosPdfContreller:", error.message);
+    res.status(500).json({
+      message: "Error al procesar la solicitud",
+      error: error.message || error,
+    });
   }
 };
-
 
 export default subirRecursosPdfContreller;

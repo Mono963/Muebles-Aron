@@ -1,41 +1,35 @@
 import { Request, Response, NextFunction } from "express";
 import { recursoRespository } from "../repositories/recurso.repositories";
-import { limpiarArchivosSubidos } from "../utils/multer";
 
 export const checkRecursoDuplicado = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const image = (req.files as any)?.["image"]?.[0]?.filename;
-    const pdf = (req.files as any)?.["pdf"]?.[0]?.filename;
+    const imageFile = (req.files as any)?.["image"]?.[0];
+    const pdfFile = (req.files as any)?.["pdf"]?.[0];
 
-    if (!image || !pdf) {
-      limpiarArchivosSubidos(image, pdf);
-      return void res.status(400).json({ message: "Archivos no válidos o faltantes" });
+    if (!imageFile || !pdfFile) {
+      res.status(400).json({ message: "Archivos no válidos o faltantes" });
+      return; 
     }
 
     const existente = await recursoRespository.checkExist(
-      image,
-      pdf,
+      imageFile.originalname,
+      pdfFile.originalname,
       req.body.title
     );
-        
 
     if (existente) {
-      limpiarArchivosSubidos(image, pdf);
-      return void res.status(400).json({
+       res.status(400).json({
         message: "Ya existe un recurso con el mismo archivo de imagen o PDF",
       });
+      return;
     }
 
     next();
   } catch (error) {
-    limpiarArchivosSubidos(
-      (req.files as any)?.["image"]?.[0]?.filename,
-      (req.files as any)?.["pdf"]?.[0]?.filename
-    );
-
-    return void res.status(500).json({
+      res.status(500).json({
       message: "Error al verificar duplicados",
       error: error instanceof Error ? error.message : error,
     });
+    return
   }
 };
